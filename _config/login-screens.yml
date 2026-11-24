@@ -1,0 +1,22 @@
+---
+Name: login-screens
+After: '#login-forms'
+---
+SilverStripe\Security\Security:
+  extensions:
+    - BradTipper\LoginScreens\LoginScreenExtension
+
+# Defaults. Override in your project, see the README.
+BradTipper\LoginScreens\LoginScreen:
+  logo: null
+  logo_dark: null
+  logo_max_width: null
+  logo_max_height: null
+  hide_silverstripe_brand: true
+  colors: {}
+  dark_colors: {}
+
+# The module's theme overrides the AppBrand include to render the logo.
+SilverStripe\LoginForms\EnablerExtension:
+  login_themes:
+    - 'bradtipper/silverstripe-login-screens:login-screens'

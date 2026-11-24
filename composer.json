@@ -1,0 +1,20 @@
+{
+    "name": "bradtipper/silverstripe-login-screens",
+    "description": "Brand the Silverstripe login screens (silverstripe/login-forms) from YAML: hex colours and a theme logo",
+    "type": "silverstripe-vendormodule",
+    "license": "BSD-3-Clause",
+    "keywords": ["silverstripe", "login", "branding", "theme"],
+    "homepage": "https://github.com/brad-tipper/silverstripe-login-screens",
+    "require": {
+        "php": "^8.3",
+        "silverstripe/framework": "^6",
+        "silverstripe/login-forms": "^6"
+    },
+    "autoload": {
+        "psr-4": {
+            "BradTipper\LoginScreens\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
