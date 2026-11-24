@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BradTipper\LoginScreens\\": "src/"
+            "BradTipper\\LoginScreens\\": "src/"
         }
     },
     "minimum-stability": "dev",
