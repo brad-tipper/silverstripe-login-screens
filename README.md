@@ -38,7 +38,7 @@ BradTipper\LoginScreens\LoginScreen:
 
 ## Options
 
-- `logo`, `logo_dark`: looked up in the project themes (`SilverStripe\View\SSViewer.themes`), then the login themes. A module path (`vendor/module: path`) or a full URL also works. With no logo, the site title from SiteConfig is shown, as in login-forms.
+- `logo`, `logo_dark`: looked up in the project themes (`SilverStripeViewSSViewer.themes`) and the login themes, then as a project or module file (`app/client/dist/brand/logo.svg`), or a full URL. A file that cannot be found means no logo, not an error. With no logo, the site title from SiteConfig is shown, as in login-forms.
 - Colour keys (3 or 6 digit hex, anything else is ignored): `page_background`, `page_text`, `form_background`, `form_text`, `field_background`, `field_border`, `field_text`, `link`, `button_background`, `button_text`, `button_hover_background`, `button_hover_text`, `error`, `warning`.
 - `button_hover_background` is derived from `button_background` when not set. Outline buttons follow `link`.
 - `colors` apply in light mode, `dark_colors` in dark mode. Dark mode follows the visitor's system setting (login-forms `enable_dark_mode`).

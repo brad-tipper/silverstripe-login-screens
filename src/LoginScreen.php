@@ -2,6 +2,7 @@
 
 namespace BradTipper\LoginScreens;
 
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
@@ -16,7 +17,10 @@ class LoginScreen
     use Configurable;
     use Injectable;
 
-    /** Logo path inside the theme (e.g. images/logo.svg), a module resource path, or a full URL. */
+    /**
+     * Logo path inside the theme (e.g. images/logo.svg), a project or module file (e.g. app/client/dist/brand/logo.svg),
+     * or a full URL. A file that cannot be found means no logo, not an error.
+     */
     private static ?string $logo = null;
 
     /** Optional logo for dark mode. Same forms as `logo`. */
@@ -103,7 +107,15 @@ class LoginScreen
         $found = ThemeResourceLoader::inst()->findThemedResource($path, $themes);
         $resource = $found ?: $path;
 
-        return (string) ModuleResourceLoader::singleton()->resolveURL($resource);
+        // A missing file must not break the login page: fall back to no logo.
+        $relative = ltrim($resource, '/');
+        if (is_file(Director::baseFolder() . '/' . $relative)) {
+            return (string) ModuleResourceLoader::singleton()->resolveURL($relative);
+        }
+        if (is_file(Director::publicFolder() . '/' . $relative)) {
+            return Director::baseURL() . $relative;
+        }
+        return '';
     }
 
     /** @param array<string, mixed> $colors */
